@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:mysql://47.103.3.101:3306/ssm?characterEncoding=utf-8
+    deiver-class-name: com.mysql.jdbc.Driver
+    username: itoffice
+    password: MyNewPass4!
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/views/
+    suffix: .html
+  redis:
+    host: 47.103.3.101
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+  #启动的端口
+server:
+  port: 8080
+

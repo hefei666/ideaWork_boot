@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/lib/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<h1>hello</h1>
+<div id="he"></div>
+<button onclick="getCurr(1)">12121</button>
+<script>
+    var sts = ''
+
+    function getCurr(curr) {
+
+        console.log(curr);
+        $.ajax({
+            url: "/generator/list",
+            type: 'POST',
+            async: false,
+            success: function (result) {
+
+                console.log(result.ces);
+            }
+        });
+
+    }
+
+</script>
+</body>
+</html>
