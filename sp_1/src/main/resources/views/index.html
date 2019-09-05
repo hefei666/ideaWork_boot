@@ -1,32 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="../js/lib/jquery-3.3.1.min.js"></script>
-</head>
-<body>
-<h1>hello</h1>
-<div id="he"></div>
-<button onclick="getCurr(1)">12121</button>
-<script>
-    var sts = ''
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>my-project</title>
+    <!--必要样式-->
+    <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/loaders.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div class='login'>
+    <div class='login_title'>
+      <img class="circleImg" src="/static/img/head.jpg"  />
+    </div>
+    <form id="form_login" class='login_fields'>
+      <div class='login_fields__user'>
+        <div class='icon'>
+          <img alt="" src='/static/img/user_icon_copy.png'>
+        </div>
+        <input name="login" placeholder='请输入用户名或手机号码' maxlength="16" type='text' autocomplete="off" />
+        <div class='validation'>
+          <img alt="" src='/static/img/tick.png'>
+        </div>
+      </div>
+      <div class='login_fields__password'>
+        <div class='icon'>
+          <img alt="" src='/static/img/lock_icon_copy.png'>
+        </div>
+        <input name="pwd" placeholder='密码' maxlength="16" type='text' autocomplete="off">
+        <div class='validation'>
+          <img alt="" src='/static/img/tick.png'>
+        </div>
+      </div>
+      <div class='login_fields__password'>
+        <div class='icon'>
+          <img alt="" src='/static/img/key.png'>
+        </div>
+        <input  placeholder='验证码' maxlength="4" type='text' name="ValidateNum" autocomplete="off">
+        <div class='validation' style="opacity: 1; right: -5px;top: -3px;">
+          <canvas class="J_codeimg" id="myCanvas" onclick="Code();">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+        </div>
+      </div>
+      <div class='login_fields__submit'>
+        <input type='button' value='登录'>
+      </div>
+    </form>
+  </div>
+  <div class="OverWindows"></div>
 
-    function getCurr(curr) {
-
-        console.log(curr);
-        $.ajax({
-            url: "/generator/list",
-            type: 'POST',
-            async: false,
-            success: function (result) {
-
-                console.log(result.ces);
-            }
-        });
-
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src='/static/js/stopExecutionOnTimeout.js?t=1'></script>
+  <script type="text/javascript" src="/static/js/Particleground.js"></script>
+  <script type="text/javascript" src="/static/js/Treatment.js"></script>
+  <script type="text/javascript">
+    var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
+    var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
+    var CodeVal = 0;
+    Code();
+    function Code() {
+      if(canGetCookie == 1){
+        createCode("AdminCode");
+        var AdminCode = getCookieValue("AdminCode");
+        showCheck(AdminCode);
+      }else{
+        showCheck(createCode(""));
+      }
     }
+    function showCheck(a) {
+      CodeVal = a;
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.clearRect(0, 0, 1000, 1000);
+      ctx.font = "80px 'Hiragino Sans GB'";
+      ctx.fillStyle = "#E8DFE8";
+      ctx.fillText(a, 0, 100);
+    }
+    $(document).keypress(function (e) {
+      // 回车键事件
+      if (e.which == 13) {
+        $('input[type="button"]').click();
+      }
+    });
+    //粒子背景特效
+    $('body').particleground({
+      dotColor: '#E8DFE8',
+      lineColor: '#133b88'
+    });
 
-</script>
-</body>
+  </script>
+
+  </body>
 </html>

@@ -12,6 +12,8 @@ spring:
     encoding: UTF-8
     prefix: classpath:/views/
     suffix: .html
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
   redis:
     host: 47.103.3.101
     port: 6379
@@ -22,8 +24,8 @@ spring:
       max-wait: -1
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.demo.entity
+  type-aliases-package: com.example.sp_1.entity
   #启动的端口
 server:
-  port: 8080
+  port: 8089
 
