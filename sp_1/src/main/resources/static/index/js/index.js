@@ -31,9 +31,3 @@ $('body').particleground({
     lineColor: '#133b88'
 });
 
-/**
- * 登录
- */
-function login() {
-
-}

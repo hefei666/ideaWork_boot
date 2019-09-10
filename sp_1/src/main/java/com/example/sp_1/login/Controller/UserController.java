@@ -53,7 +53,7 @@ public class UserController {
         //查询列表数据
         Map map = new HashMap();
         try {
-            List list = userService.findAsset(null);
+            List list = userService.findUser(null);
             JSONArray json = JSONArray.fromObject(list);
             map.put("ces", json);
         } catch (Exception e) {

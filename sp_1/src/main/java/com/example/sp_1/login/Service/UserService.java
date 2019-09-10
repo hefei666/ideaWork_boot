@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service("userService")
@@ -14,11 +15,10 @@ public class UserService {
     private UserMapper userMapper;
 
     /*
-     * ͨ��id��ȡ����
+     *查找用户登录情况
      */
-    public List findAsset(String id) throws Exception {
-        List list = userMapper.queryList(null);
-        System.out.println("121212");
+    public List findUser(Map<String,Object> params) throws Exception {
+        List list = userMapper.queryList(params);
         return list;
     }
 }

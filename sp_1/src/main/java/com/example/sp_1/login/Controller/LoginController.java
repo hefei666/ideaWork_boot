@@ -38,17 +38,13 @@ public class LoginController extends BasicController {
         ActionResult actionResult=new ActionResult();
         actionResult.setCode("0000");
         Map<String,Object> params=new HashMap<String,Object>();
+        setParams(request,params);
         try {
-            List list = userService.findAsset(null);
-            JSONArray json = JSONArray.fromObject(list);
-            redisService.set("12312",list.get(0));
+            List list = userService.findUser(params);
             session.setAttribute("REDIS_ID","12312");
         }catch (Exception e) {
             e.printStackTrace();
-        }
-        setParams(request,params);
-        actionResult.setResult(params);
-        return actionResult;
+        }return actionResult;
     }
 
 }

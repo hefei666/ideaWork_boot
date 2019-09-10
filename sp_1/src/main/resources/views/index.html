@@ -8,6 +8,21 @@
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/demo.css" rel="stylesheet" type="text/css" />
     <link href="/static/css/loaders.css" rel="stylesheet" type="text/css" />
+    <script>
+      /**
+       * 登录
+       */
+      function toLogin() {
+        $.ajax({
+          url : "/login/login",
+          data : $('#form_login').serialize(),
+          type : 'POST',
+          async : false,
+          success : function(result) {
+          }
+        });
+      }
+    </script>
   </head>
   <body>
   <div class='login'>
@@ -19,7 +34,7 @@
         <div class='icon'>
           <img alt="" src='/static/img/user_icon_copy.png'>
         </div>
-        <input name="login" placeholder='请输入用户名或手机号码' maxlength="16" type='text' autocomplete="off" />
+        <input name="user" placeholder='请输入用户名或手机号码' maxlength="16" type='text' autocomplete="off" />
         <div class='validation'>
           <img alt="" src='/static/img/tick.png'>
         </div>
@@ -44,10 +59,10 @@
       </div>
       <div class='login_fields__submit'>
         <div style='float: left'>
-          <input  type='button' value='登录' onclick="login()">
+          <input  type='button' value='登录' onclick="toLogin()">
         </div>
         <div style='float: right'>
-          <input  type='button' value='登录' onclick="login()">
+          <input  type='button' value='注册' onclick="toLogin()">
         </div>
       </div>
     </form>

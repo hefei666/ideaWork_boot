@@ -17,6 +17,8 @@
         FROM
             xx_user AS u
         WHERE 1=1
-        <
+        <if test="account_id!=null and account_id!=''">
+            u.account_id=#{userId}
+        </if>
     </select>
 </mapper>
