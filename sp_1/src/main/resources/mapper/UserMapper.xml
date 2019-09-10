@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.sp_1.Dao.UserMapper">
-    <select id="queryList" resultType="map">
-        select * from xx_assets
+<mapper namespace="com.example.sp_1.login.Dao.UserMapper">
+    <select id="queryList" resultType="com.example.sp_1.login.Entity.User">
+        SELECT
+            u.account_id,
+            u.user_name,
+            u.password,
+            u.tel,
+            u.mail,
+            u.gender,
+            u.rec_status,
+            u.rec_person,
+            u.rec_time,
+            u.rec_updateperson,
+            u.rec_updatetime
+        FROM
+            xx_user AS u
+        WHERE 1=1
+        <
     </select>
 </mapper>
